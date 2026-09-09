@@ -69,7 +69,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mon-app:latest
 
   deploy:
-    name: Deploy sur VM Azure
+    name: Deploy sur la VM du prof
     needs:
       - docker-build-push
     runs-on: ubuntu-latest
