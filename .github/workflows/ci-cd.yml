@@ -103,7 +103,10 @@ jobs:
             curl --fail http://localhost:8094/health
           EOF
 
-      - name: Vérifier via l'IP publique
+
+      - name: Vérification finale de l'application
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
-        run: curl --fail "http://$SSH_HOST:8094/health"
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          ssh "$SSH_USER@$SSH_HOST" "curl --fail http://localhost:8094/health"
